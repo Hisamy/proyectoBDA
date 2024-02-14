@@ -1,16 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
-package com.mycompany.proyectobda_247164_246943;
+package org.itson.bda.proyectobda_247164_246943.bancoMB;
 
-/**
- *
- * @author hisamy cinco cota
- */
-public class ProyectoBDA_247164_246943 {
 
+public class BancoMB {
+
+   
     public static void main(String[] args) {
-        
+        Clientes clientes = new Clientes("Moch","Pro","Gamer");
+        System.out.println(clientes);
+    
     }
+    
 }
