@@ -6,7 +6,7 @@ package com.mycompany.proyectobda_247164_246943;
 
 /**
  *
- * @author hisam
+ * @author hisamy cinco cota
  */
 public class ProyectoBDA_247164_246943 {
 
