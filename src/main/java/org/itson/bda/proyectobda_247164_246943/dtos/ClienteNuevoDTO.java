@@ -1,7 +1,7 @@
 
 package org.itson.bda.proyectobda_247164_246943.dtos;
 
-import java.util.Date;
+import java.sql.Date;
 
 
 public class ClienteNuevoDTO {
