@@ -8,15 +8,28 @@ import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
 
 
 public class BancoMB {
-
-   
+   /**
+    * @param args Clase principal de BancoMB.
+    */
     public static void main(String[] args) {
-          String cadenaConexion = "jdbc:mysql://localhost/banco";
+      String cadenaConexion = "jdbc:mysql://localhost/banco";
         String usuario = "root";
         String password = "password";
+        /**
+         * Credenciales y detalles de conexión a la base de datos (URL, usuario, contraseña).
+         */
         IConexion conexion = new Conexion(cadenaConexion, usuario, password);
+        /**
+         * Instancia de la interfaz IConexion implementando Conexion.
+         */
         IClientesDAO sociosDAO = new ClientesDAO(conexion);
+        /**
+         * Instancia de la interfaz IClientesDAO implementando ClientesDAO, pasando la instancia de conexión.
+         */
         ClientesForm clientesForm = new ClientesForm(sociosDAO);
+       /**
+        * Instancia de la clase ClientesForm.
+        */
         clientesForm.setVisible(true);
 
 //        try {
