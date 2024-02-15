@@ -16,8 +16,8 @@ public class BancoMB {
         String password = "password";
         IConexion conexion = new Conexion(cadenaConexion, usuario, password);
         IClientesDAO sociosDAO = new ClientesDAO(conexion);
-        ClientesForm sociosForm = new ClientesForm(sociosDAO);
-        sociosForm.setVisible(true);
+        ClientesForm clientesForm = new ClientesForm(sociosDAO);
+        clientesForm.setVisible(true);
 
 //        try {
 //            Socio socioEliminado = sociosDAO.eliminar(13);
@@ -66,4 +66,4 @@ public class BancoMB {
     
     }
     
-}
+
