@@ -5,7 +5,7 @@ import java.sql.Date;
 
 
 public class CuentaNuevaDTO {
-     private Integer numeroCuenta;
+    private Integer numeroCuenta;
     private Date fechaApertura;
     private float saldo;
     private int clave;

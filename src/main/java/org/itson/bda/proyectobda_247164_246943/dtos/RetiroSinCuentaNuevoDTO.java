@@ -6,6 +6,7 @@ import java.sql.Date;
 
 public class RetiroSinCuentaNuevoDTO{
     private int clave;
+    private Float monto;
     private Date fechaGenerada;
 
     public int getClave() {
@@ -22,6 +23,14 @@ public class RetiroSinCuentaNuevoDTO{
 
     public void setFechaGenerada(Date fechaGenerada) {
         this.fechaGenerada = fechaGenerada;
+    }
+
+    public Float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Float monto) {
+        this.monto = monto;
     }
     
     
