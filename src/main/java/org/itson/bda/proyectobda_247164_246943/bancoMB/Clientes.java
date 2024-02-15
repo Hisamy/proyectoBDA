@@ -4,12 +4,9 @@
 
 package org.itson.bda.proyectobda_247164_246943.bancoMB;
 
-import java.util.Date;
+import java.sql.Date;
 
-/**
- *
- * @author hisam
- */
+
 public class Clientes {
 
    
