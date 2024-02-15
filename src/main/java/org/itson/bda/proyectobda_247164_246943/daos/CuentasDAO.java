@@ -15,15 +15,27 @@ import org.itson.bda.proyectobda_247164_246943.conexiones.IConexion;
 import org.itson.bda.proyectobda_247164_246943.dtos.CuentaNuevaDTO;
 import org.itson.bda.proyectobda_247164_246943.excepciones.PersistenciaException;
 
+
+/**
+ * La clase `CuentasDAO` implementa la interfaz `ICuentasDAO` y proporciona
+ * operaciones para acceder y manipular datos de cuentas en la base de datos.
+ */
 public class CuentasDAO implements ICuentasDAO {
 
     final IConexion conexionBD;
     static final Logger logger = Logger.getLogger(ClientesDAO.class.getName());
-
+    /**
+    * Constructor de la clase `CuentasDAO`.
+    * @param conexion Objeto que implementa la interfaz `IConexion` para obtener conexiones a la base de datos.
+    */
     public CuentasDAO(IConexion conexion) {
         this.conexionBD = conexion;
     }
-
+    /**
+    * Consulta la información de todas las cuentas en la base de datos.
+    * @return Una lista de objetos `Cuentas`.
+    * @throws PersistenciaException Si ocurre un error al consultar la base de datos.
+    */
     @Override
     public List<Cuentas> consultar() throws PersistenciaException {
         String sentenciaSQL = """
@@ -49,7 +61,12 @@ public class CuentasDAO implements ICuentasDAO {
             throw new PersistenciaException("No se pudieron consultar los cuentas.", e);
         }
     }
-
+    /**
+     * Agrega una nueva cuenta a la base de datos.
+     * @param cuentaNueva Objeto `CuentaNuevaDTO` que contiene la información de la nueva cuenta.
+     * @return Un objeto `Cuentas` con la información de la cuenta recién agregada.
+     * @throws PersistenciaException Si ocurre un error al insertar la cuenta en la base de datos.
+     */
     @Override
     public Cuentas agregar(CuentaNuevaDTO cuentaNueva) throws PersistenciaException {
         String sentenciaSQL = """
