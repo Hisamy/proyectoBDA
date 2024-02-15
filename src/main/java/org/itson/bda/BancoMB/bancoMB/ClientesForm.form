@@ -37,6 +37,9 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
+          /**
+           * @param evt Boton de retiro sin cliente que selecciona la cantidad de $200 pesos.
+           */
         <Component class="javax.swing.JButton" name="btn200">
           <Properties>
             <Property name="text" type="java.lang.String" value="$200"/>
@@ -50,6 +53,9 @@
             </Constraint>
           </Constraints>
         </Component>
+        /**
+         * @param evt Boton de retiro sin cliente que selecciona la cantidad de $300 pesos.
+         */
         <Component class="javax.swing.JButton" name="btn300">
           <Properties>
             <Property name="text" type="java.lang.String" value="$300"/>
@@ -60,6 +66,9 @@
             </Constraint>
           </Constraints>
         </Component>
+        /**
+         * @param evt Boton de retiro sin cliente que selecciona la cantidad de $400 pesos.
+         */
         <Component class="javax.swing.JButton" name="btn400">
           <Properties>
             <Property name="text" type="java.lang.String" value="$400"/>
@@ -73,6 +82,9 @@
             </Constraint>
           </Constraints>
         </Component>
+        /**
+         * @param evt Boton de retiro sin cliente que selecciona la cantidad de $500 pesos.
+         */
         <Component class="javax.swing.JButton" name="btn500">
           <Properties>
             <Property name="text" type="java.lang.String" value="$500"/>
@@ -86,6 +98,9 @@
             </Constraint>
           </Constraints>
         </Component>
+        /**
+         * @param evt Boton de retiro sin cliente que selecciona la cantidad de $1000 pesos.
+         */
         <Component class="javax.swing.JButton" name="btn1000">
           <Properties>
             <Property name="text" type="java.lang.String" value="$1000"/>
@@ -109,6 +124,9 @@
             </Constraint>
           </Constraints>
         </Component>
+         /**
+         * @param evt txtConcepto, texto referente al campo de texto de concepto del retiro sin cuenta.
+         */
         <Component class="javax.swing.JTextField" name="txtConcepto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Concepto (opcional)"/>
@@ -132,6 +150,9 @@
             </Constraint>
           </Constraints>
         </Component>
+         /**
+         * @param evt textOtraCifra, texto referente al campo de texto de concepto del retiro sin cuenta.
+         */
         <Component class="javax.swing.JTextField" name="txtOtraCifra">
           <Properties>
             <Property name="text" type="java.lang.String" value="Otra Cifra"/>
@@ -145,6 +166,9 @@
             </Constraint>
           </Constraints>
         </Component>
+         /**
+         * @param evt Método de acción para el botón "Aceptar".
+         */
         <Component class="javax.swing.JButton" name="btnAceptar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aceptar"/>
@@ -158,6 +182,9 @@
             </Constraint>
           </Constraints>
         </Component>
+           /**
+           * @param evt Método de acción para el botón "Cancelar".
+           */
         <Component class="javax.swing.JButton" name="btnCancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cancelar"/>
