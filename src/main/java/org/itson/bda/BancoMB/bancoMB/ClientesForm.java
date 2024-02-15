@@ -4,6 +4,10 @@ import javax.swing.table.DefaultTableModel;
 import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
 import org.itson.bdavanzadas.clubnauticopersistencia.dtos.ClienteNuevoDTO;
 
+/**
+ * La clase publica `ClientesForm` representa la interfaz gráfica para realizar operaciones
+ * relacionadas con retiros de efectivo en la aplicacción del banco MB.
+ */
 public class ClientesForm extends javax.swing.JFrame {
 
     public int monto;
@@ -11,11 +15,14 @@ public class ClientesForm extends javax.swing.JFrame {
     private Acciones opcion;
     private final IClientesDAO clientesDAO;
     DefaultTableModel modelo;
-
+     /**
+     * Constructor de la clase `ClientesForm`.
+     * @param clientesDAO Interfaz para acceder a la capa de acceso de datos relacionada con clientes.
+     */
     public ClientesForm(IClientesDAO clientesDAO) {
         initComponents();
         this.clientesDAO = clientesDAO;
-
+        // Configuración de botones de las acciones aceptar y cancelar.
         if (opcion == Acciones.CANCELAR) {
             btnCancelar.setText("Cancelar");
 
@@ -54,7 +61,7 @@ public class ClientesForm extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+   
         btn200.setText("$200");
         btn200.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,10 +69,8 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn200, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
-
         btn300.setText("$300");
         jPanel1.add(btn300, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
-
         btn400.setText("$400");
         btn400.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +78,6 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn400, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
-
         btn500.setText("$500");
         btn500.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,7 +85,7 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn500, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
-
+        
         btn1000.setText("$1000");
         btn1000.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +103,7 @@ public class ClientesForm extends javax.swing.JFrame {
                 txtConceptoActionPerformed(evt);
             }
         });
+
         jPanel1.add(txtConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 260, -1));
 
         jLabel1.setText("Solo múltiplos de 100");
@@ -118,6 +123,7 @@ public class ClientesForm extends javax.swing.JFrame {
                 btnAceptarActionPerformed(evt);
             }
         });
+
         jPanel1.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
         btnCancelar.setText("Cancelar");
@@ -126,6 +132,7 @@ public class ClientesForm extends javax.swing.JFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
+
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
         btn100.setText("$100");
@@ -141,31 +148,47 @@ public class ClientesForm extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /** 
+    * @param evt Boton de retiro sin cliente que selecciona la cantidad de $200 pesos.
+    */
     private void btn200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn200ActionPerformed
         System.out.print(200);
     }//GEN-LAST:event_btn200ActionPerformed
-
+    /**
+    * @param evt Boton de retiro sin cliente que selecciona la cantidad de $400 pesos.
+    */
     private void btn400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn400ActionPerformed
         System.out.print(400);    }//GEN-LAST:event_btn400ActionPerformed
-
+    /**
+     * @param evt Boton de retiro sin cliente que selecciona la cantidad de $500 pesos.
+     */
     private void btn500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn500ActionPerformed
         System.out.print(500);    }//GEN-LAST:event_btn500ActionPerformed
-
+    /**
+    * @param evt Boton de retiro sin cliente que selecciona la cantidad de $100 pesos.
+    */
     private void btn100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn100ActionPerformed
         System.out.print(100);    }//GEN-LAST:event_btn100ActionPerformed
-
+    /**
+    * @param evt txtConcepto, texto referente al campo de texto de concepto del retiro sin cuenta.
+    */
     private void txtConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConceptoActionPerformed
         txtConcepto.getText();
     }//GEN-LAST:event_txtConceptoActionPerformed
-
+    /**
+    * @param evt textOtraCifra, texto referente al campo de texto de concepto del retiro sin cuenta.
+    */
     private void txtOtraCifraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOtraCifraActionPerformed
         txtOtraCifra.getText();
     }//GEN-LAST:event_txtOtraCifraActionPerformed
-
+    /**
+    * @param evt Boton de retiro sin cliente que selecciona la cantidad de $1000 pesos.
+    */
     private void btn1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1000ActionPerformed
         System.out.print(1000);    }//GEN-LAST:event_btn1000ActionPerformed
-
+    /**
+    * @param evt Método de acción para el botón "Aceptar".
+    */
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String concepto = txtConcepto.getText();
         String otraCifra = txtOtraCifra.getText();
@@ -174,7 +197,9 @@ public class ClientesForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnAceptarActionPerformed
-
+    /**
+    * @param evt Método de acción para el botón "Cancelar".
+    */
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
