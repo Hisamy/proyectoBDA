@@ -18,7 +18,13 @@ public class GeneraClave extends javax.swing.JFrame {
     }
     
     public void setConcepto(String concepto) {
-        lblConcepto.setText(concepto);
+       if(concepto.isBlank()){
+           lblConcepto.setText("");
+           lblConcepto2.setVisible(false);
+       }
+       else{
+         lblConcepto.setText(concepto);
+       } 
     }
 
     public void setMonto(String monto) {
@@ -70,7 +76,7 @@ public class GeneraClave extends javax.swing.JFrame {
         lblConcepto = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblConcepto2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -80,23 +86,23 @@ public class GeneraClave extends javax.swing.JFrame {
 
         generaClave.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblRetiroDisponible.setText("Retiro disponible");
-        generaClave.add(lblRetiroDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
+        lblRetiroDisponible.setText("RETIRO DISPONIBLE");
+        generaClave.add(lblRetiroDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         lblVencimiento.setText("Vence en 10 minutos");
-        generaClave.add(lblVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
+        generaClave.add(lblVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
 
         lblContrasenia.setText("Contraseña");
-        generaClave.add(lblContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 90, -1));
+        generaClave.add(lblContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 90, -1));
 
         lblFolio.setText("Folio");
-        generaClave.add(lblFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 70, -1));
+        generaClave.add(lblFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 70, -1));
 
         lblMonto.setText("Monto");
         generaClave.add(lblMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 80, -1));
 
         lblConcepto.setText("Concepto");
-        generaClave.add(lblConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 150, -1));
+        generaClave.add(lblConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 150, -1));
 
         btnSalir.setText("Salir");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -109,14 +115,14 @@ public class GeneraClave extends javax.swing.JFrame {
         jLabel1.setText("Monto:");
         generaClave.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
-        jLabel2.setText("Concepto:");
-        generaClave.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        lblConcepto2.setText("Concepto:");
+        generaClave.add(lblConcepto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         jLabel3.setText("Contraseña:");
-        generaClave.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
+        generaClave.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         jLabel4.setText("Folio:");
-        generaClave.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
+        generaClave.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         getContentPane().add(generaClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 328));
 
@@ -138,10 +144,10 @@ dispose();
     private javax.swing.JButton btnSalir;
     private javax.swing.JPanel generaClave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblConcepto;
+    private javax.swing.JLabel lblConcepto2;
     private javax.swing.JLabel lblContrasenia;
     private javax.swing.JLabel lblFolio;
     private javax.swing.JLabel lblMonto;
