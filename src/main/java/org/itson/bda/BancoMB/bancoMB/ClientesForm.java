@@ -1,16 +1,21 @@
 package org.itson.bda.BancoMB.bancoMB;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
-import org.itson.bdavanzadas.clubnauticopersistencia.dtos.ClienteNuevoDTO;
+import org.itson.bda.proyectobda_247164_246943.daos.RetirosSinCuentaDAO;
+import org.itson.bda.proyectobda_247164_246943.dtos.RetiroSinCuentaNuevoDTO;
 
 public class ClientesForm extends javax.swing.JFrame {
 
-    public int monto;
+    public float monto;
     public String concepto;
     private Acciones opcion;
     private final IClientesDAO clientesDAO;
-    DefaultTableModel modelo;
+    private List<RetiroSinCuentaNuevoDTO> listaRetiros = new ArrayList<>();
+
 
     public ClientesForm(IClientesDAO clientesDAO) {
         initComponents();
@@ -36,18 +41,14 @@ public class ClientesForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btn200 = new javax.swing.JButton();
-        btn300 = new javax.swing.JButton();
-        btn400 = new javax.swing.JButton();
-        btn500 = new javax.swing.JButton();
-        btn1000 = new javax.swing.JButton();
         LblImporte = new javax.swing.JLabel();
         txtConcepto = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtOtraCifra = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btn100 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Retiro sin cuenta");
@@ -55,62 +56,25 @@ public class ClientesForm extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn200.setText("$200");
-        btn200.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn200ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn200, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, -1, -1));
-
-        btn300.setText("$300");
-        jPanel1.add(btn300, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
-
-        btn400.setText("$400");
-        btn400.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn400ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn400, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
-
-        btn500.setText("$500");
-        btn500.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn500ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn500, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
-
-        btn1000.setText("$1000");
-        btn1000.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1000ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn1000, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
-
         LblImporte.setText("Importe");
         jPanel1.add(LblImporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
-        txtConcepto.setText("Concepto (opcional)");
         txtConcepto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtConceptoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 260, -1));
+        jPanel1.add(txtConcepto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 260, -1));
 
         jLabel1.setText("Solo múltiplos de 100");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
-        txtOtraCifra.setText("Otra Cifra");
         txtOtraCifra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtOtraCifraActionPerformed(evt);
             }
         });
-        jPanel1.add(txtOtraCifra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 260, -1));
+        jPanel1.add(txtOtraCifra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 260, -1));
 
         btnAceptar.setText("Aceptar");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -128,13 +92,11 @@ public class ClientesForm extends javax.swing.JFrame {
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
 
-        btn100.setText("$100");
-        btn100.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn100ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn100, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+        jLabel2.setText("Cifra:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
+
+        jLabel3.setText("Concepto(opcional):");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
@@ -142,55 +104,67 @@ public class ClientesForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn200ActionPerformed
-        System.out.print(200);
-    }//GEN-LAST:event_btn200ActionPerformed
-
-    private void btn400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn400ActionPerformed
-        System.out.print(400);    }//GEN-LAST:event_btn400ActionPerformed
-
-    private void btn500ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn500ActionPerformed
-        System.out.print(500);    }//GEN-LAST:event_btn500ActionPerformed
-
-    private void btn100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn100ActionPerformed
-        System.out.print(100);    }//GEN-LAST:event_btn100ActionPerformed
-
     private void txtConceptoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConceptoActionPerformed
         txtConcepto.getText();
+    
     }//GEN-LAST:event_txtConceptoActionPerformed
 
     private void txtOtraCifraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOtraCifraActionPerformed
         txtOtraCifra.getText();
     }//GEN-LAST:event_txtOtraCifraActionPerformed
 
-    private void btn1000ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1000ActionPerformed
-        System.out.print(1000);    }//GEN-LAST:event_btn1000ActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String concepto = txtConcepto.getText();
-        String otraCifra = txtOtraCifra.getText();
-        btnAceptar.setText(concepto + " - " + otraCifra);
-        clientesDAO.agregar(concepto, otraCifra);
+     String concepto = txtConcepto.getText();
+     String otraCifra = txtOtraCifra.getText();
+      GeneraClave claveFrame = new GeneraClave(clientesDAO);
+  
+     
+    try {
+        float monto = Float.parseFloat(otraCifra);
+        
+        if (monto % 100 == 0) {
+        RetiroSinCuentaNuevoDTO retiroSinCuentaNuevo = new RetiroSinCuentaNuevoDTO();
+        retiroSinCuentaNuevo.setMonto(monto);
 
+        agregarRetiro(retiroSinCuentaNuevo);
 
+         claveFrame.setConcepto(concepto);  
+        
+        claveFrame.setMonto(String.valueOf(monto));
+        claveFrame.setContrasenia();
+        claveFrame.setFolio();
+
+        claveFrame.setVisible(true);
+
+        
+        }else {
+            // Muestra un mensaje de error si el monto no es un múltiplo de 100
+            JOptionPane.showMessageDialog(this, "El monto debe ser un múltiplo de 100", "No es múltiplo", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        // La entrada no es un número, muestra un mensaje de error 
+        JOptionPane.showMessageDialog(this, "ERROR: La cifra ingresada no es válida.", "Cifra inválida", JOptionPane.ERROR_MESSAGE);
+    }
+    if (claveFrame.isVisible()) {
+            dispose();
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+private void agregarRetiro(RetiroSinCuentaNuevoDTO retiro) {
+        listaRetiros.add(retiro);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LblImporte;
-    private javax.swing.JButton btn100;
-    private javax.swing.JButton btn1000;
-    private javax.swing.JButton btn200;
-    private javax.swing.JButton btn300;
-    private javax.swing.JButton btn400;
-    private javax.swing.JButton btn500;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtConcepto;
     private javax.swing.JTextField txtOtraCifra;
