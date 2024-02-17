@@ -13,6 +13,11 @@ import org.itson.bda.proyectobda_247164_246943.daos.RetirosSinCuentaDAO;
 import org.itson.bda.proyectobda_247164_246943.dtos.RetiroSinCuentaNuevoDTO;
 import org.itson.bda.proyectobda_247164_246943.excepciones.PersistenciaException;
 
+
+/**
+ * La clase publica `RetirosSinCuentaForm` representa la interfaz gráfica para realizar operaciones
+ * relacionadas con retiros de efectivo en la aplicacción del banco MB.
+ */
 public class RetiroSinCuentaForm extends javax.swing.JFrame {
 
     public float monto;
@@ -26,7 +31,10 @@ public class RetiroSinCuentaForm extends javax.swing.JFrame {
     private final IClientesDAO clientesDAO;
     private List<RetiroSinCuentaNuevoDTO> listaRetiros = new ArrayList<>();
 
-
+    /**
+     * Constructor de la clase `RetirosSinCuentaForm`.
+     * @param clientesDAO Interfaz para acceder a la capa de acceso de datos relacionada con clientes.
+     */
     public RetiroSinCuentaForm(IClientesDAO clientesDAO) {
         initComponents();
         this.clientesDAO = clientesDAO;
