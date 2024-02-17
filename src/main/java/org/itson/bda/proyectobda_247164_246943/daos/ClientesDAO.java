@@ -15,15 +15,28 @@ import org.itson.bda.proyectobda_247164_246943.conexiones.IConexion;
 import org.itson.bda.proyectobda_247164_246943.dtos.ClienteNuevoDTO;
 import org.itson.bda.proyectobda_247164_246943.excepciones.PersistenciaException;
 
-public class ClientesDAO implements IClientesDAO {
 
+/**
+ * La clase `ClientesDAO` implementa la interfaz `IClientesDAO` y proporciona
+ * operaciones para acceder y manipular datos de clientes en la base de datos.
+ */
+public class ClientesDAO implements IClientesDAO {
+     // Atributos de la clase
     final IConexion conexionBD;
     static final Logger logger = Logger.getLogger(ClientesDAO.class.getName());
-
+    
+    /**
+    * Constructor de la clase `ClientesDAO`.
+    * @param conexion Objeto que implementa la interfaz `IConexion` para obtener conexiones a la base de datos.
+    */
     public ClientesDAO(IConexion conexion) {
         this.conexionBD = conexion;
     }
-    
+    /**
+    * Consulta la información de todos los clientes en la base de datos.
+    * @return Una lista de objetos `Clientes`.
+    * @throws PersistenciaException Si ocurre un error al consultar la base de datos.
+    */
     @Override
     public List<Clientes> consultar() throws PersistenciaException {
         String sentenciaSQL = """
@@ -53,6 +66,12 @@ public class ClientesDAO implements IClientesDAO {
         }
     }
 
+    /**
+    * Agrega un nuevo cliente a la base de datos.
+    * @param clienteNuevo Objeto `ClienteNuevoDTO` que contiene la información del nuevo cliente.
+    * @return Un objeto `Clientes` con la información del cliente recién agregado.
+    * @throws PersistenciaException Si ocurre un error al insertar el cliente en la base de datos.
+    */
     @Override
     public Clientes agregar(ClienteNuevoDTO clienteNuevo) throws PersistenciaException {
         String sentenciaSQL = """
