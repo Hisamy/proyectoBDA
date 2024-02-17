@@ -3,8 +3,10 @@ package org.itson.bda.BancoMB.bancoMB;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import org.itson.bda.proyectobda_247164_246943.conexiones.Conexion;
+import org.itson.bda.proyectobda_247164_246943.conexiones.IConexion;
 import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
+import org.itson.bda.proyectobda_247164_246943.daos.IRetiroSinCuentaDAO;
 import org.itson.bda.proyectobda_247164_246943.daos.RetirosSinCuentaDAO;
 import org.itson.bda.proyectobda_247164_246943.dtos.RetiroSinCuentaNuevoDTO;
 
@@ -13,6 +15,11 @@ public class ClientesForm extends javax.swing.JFrame {
     public float monto;
     public String concepto;
     private Acciones opcion;
+     String cadenaConexion = "jdbc:mysql://localhost/banco";
+     String usuario = "root";
+     String password = "cinco123";
+    IConexion conexion = new Conexion(cadenaConexion, usuario, password);
+
     private final IClientesDAO clientesDAO;
     private List<RetiroSinCuentaNuevoDTO> listaRetiros = new ArrayList<>();
 
@@ -134,6 +141,9 @@ public class ClientesForm extends javax.swing.JFrame {
         claveFrame.setContrasenia();
         claveFrame.setFolio();
 
+        IRetiroSinCuentaDAO retirosSinCuentaDao = new RetirosSinCuentaDAO(conexion);
+        retirosSinCuentaDao.agregar(retiroSinCuentaNuevo)
+        
         claveFrame.setVisible(true);
 
         
