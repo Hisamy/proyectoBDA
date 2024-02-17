@@ -2,6 +2,8 @@ package org.itson.bda.BancoMB.bancoMB;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.itson.bda.proyectobda_247164_246943.conexiones.Conexion;
 import org.itson.bda.proyectobda_247164_246943.conexiones.IConexion;
@@ -9,8 +11,9 @@ import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
 import org.itson.bda.proyectobda_247164_246943.daos.IRetiroSinCuentaDAO;
 import org.itson.bda.proyectobda_247164_246943.daos.RetirosSinCuentaDAO;
 import org.itson.bda.proyectobda_247164_246943.dtos.RetiroSinCuentaNuevoDTO;
+import org.itson.bda.proyectobda_247164_246943.excepciones.PersistenciaException;
 
-public class ClientesForm extends javax.swing.JFrame {
+public class RetiroSinCuentaForm extends javax.swing.JFrame {
 
     public float monto;
     public String concepto;
@@ -24,7 +27,7 @@ public class ClientesForm extends javax.swing.JFrame {
     private List<RetiroSinCuentaNuevoDTO> listaRetiros = new ArrayList<>();
 
 
-    public ClientesForm(IClientesDAO clientesDAO) {
+    public RetiroSinCuentaForm(IClientesDAO clientesDAO) {
         initComponents();
         this.clientesDAO = clientesDAO;
 
@@ -142,7 +145,7 @@ public class ClientesForm extends javax.swing.JFrame {
         claveFrame.setFolio();
 
         IRetiroSinCuentaDAO retirosSinCuentaDao = new RetirosSinCuentaDAO(conexion);
-        retirosSinCuentaDao.agregar(retiroSinCuentaNuevo)
+        retirosSinCuentaDao.agregar(retiroSinCuentaNuevo);
         
         claveFrame.setVisible(true);
 
@@ -154,7 +157,9 @@ public class ClientesForm extends javax.swing.JFrame {
     } catch (NumberFormatException e) {
         // La entrada no es un número, muestra un mensaje de error 
         JOptionPane.showMessageDialog(this, "ERROR: La cifra ingresada no es válida.", "Cifra inválida", JOptionPane.ERROR_MESSAGE);
-    }
+    }   catch (PersistenciaException ex) {
+            Logger.getLogger(RetiroSinCuentaForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     if (claveFrame.isVisible()) {
             dispose();
         }

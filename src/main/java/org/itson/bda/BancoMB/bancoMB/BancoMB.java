@@ -19,7 +19,7 @@ public class BancoMB {
         IConexion conexion = new Conexion(cadenaConexion, usuario, password);
         IClientesDAO clientesDAO = new ClientesDAO(conexion);
         IRetiroSinCuentaDAO retirosSinCuentaDAO = new RetirosSinCuentaDAO(conexion);
-        ClientesForm clientesForm = new ClientesForm(clientesDAO);
+        RetiroSinCuentaForm clientesForm = new RetiroSinCuentaForm(clientesDAO);
         clientesForm.setVisible(true);
         
     
