@@ -6,9 +6,11 @@ import java.sql.Date;
 
 public class ClienteNuevoDTO {
       private String nombre;
-       private String apellidoPaterno;
-       private String apellidoMaterno;
-       private Date fechaNacimiento;
+      private String apellidoPaterno;
+      private String apellidoMaterno;
+      private Date fechaNacimiento;
+      private String correoElectronico;
+
 
 
     public String getNombre() {
@@ -42,6 +44,15 @@ public class ClienteNuevoDTO {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-       
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+    
+
        
 }

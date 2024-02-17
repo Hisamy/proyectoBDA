@@ -1,4 +1,3 @@
-
 package org.itson.bda.proyectobda_247164_246943.daos;
 
 import java.sql.Connection;
@@ -17,18 +16,20 @@ import org.itson.bda.proyectobda_247164_246943.conexiones.IConexion;
 import org.itson.bda.proyectobda_247164_246943.dtos.RetiroSinCuentaNuevoDTO;
 import org.itson.bda.proyectobda_247164_246943.excepciones.PersistenciaException;
 
-
 public class RetirosSinCuentaDAO implements IRetiroSinCuentaDAO {
 
     final IConexion conexionBD;
     static final Logger logger = Logger.getLogger(ClientesDAO.class.getName());
 
+
+    
     public RetirosSinCuentaDAO(IConexion conexion) {
         this.conexionBD = conexion;
     }
+
     @Override
     public List<RetirosSinCuenta> consultar() throws PersistenciaException {
-         String sentenciaSQL = """
+        String sentenciaSQL = """
                               SELECT folio, fechaHora, contrasenia,monto
                               FROM retiros_sin_cuenta;
                               """;
@@ -53,28 +54,29 @@ public class RetirosSinCuentaDAO implements IRetiroSinCuentaDAO {
     }
 
     @Override
-    public Cuentas agregar(RetiroSinCuentaNuevoDTO retiroSinCuentaNuevo) throws PersistenciaException {
-          String sentenciaSQL = """
-                              INSERT INTO cuentas(fechaHora, contrasenia,monto) 
-                              VALUES(?, ?, ?);
+    public RetirosSinCuenta agregar(RetiroSinCuentaNuevoDTO retiroSinCuentaNuevo) throws PersistenciaException {
+        String sentenciaSQL = """
+                              INSERT INTO retiros_sin_cuenta(folio,fechaHora, contrasenia,monto) 
+                              VALUES(?, ?, ?, ?);
                               """;
         try (
-            Connection conexion = this.conexionBD.obtenerConexion(); PreparedStatement comando = conexion.prepareStatement(sentenciaSQL, Statement.RETURN_GENERATED_KEYS);) {
-            comando.setDate(1, retiroSinCuentaNuevo.getFechaGenerada());
-            comando.setFloat(2, retiroSinCuentaNuevo.getMonto());
-            comando.setInt(3, retiroSinCuentaNuevo.getClave());
+                Connection conexion = this.conexionBD.obtenerConexion(); PreparedStatement comando = conexion.prepareStatement(sentenciaSQL, Statement.RETURN_GENERATED_KEYS);) {
+            comando.setInt(1, retiroSinCuentaNuevo.getFolio());
+            comando.setDate(2, retiroSinCuentaNuevo.getFechaGenerada());
+            comando.setFloat(3, retiroSinCuentaNuevo.getMonto());
+            comando.setInt(4, retiroSinCuentaNuevo.getClave());
             int numeroRegistrosInsertados = comando.executeUpdate();
             logger.log(Level.INFO, "Se agregaron {0} Retiros Sin Cuenta", numeroRegistrosInsertados);
             ResultSet numeroCuentasGeneradas = comando.getGeneratedKeys();
             numeroCuentasGeneradas.next();
-            return new Cuentas(numeroCuentasGeneradas.getInt(1), retiroSinCuentaNuevo.getFechaGenerada(), 
-                    retiroSinCuentaNuevo.getMonto(), retiroSinCuentaNuevo.getClave());
+            return new RetirosSinCuenta (retiroSinCuentaNuevo.getFechaGenerada(),
+                     retiroSinCuentaNuevo.getClave(),
+                    retiroSinCuentaNuevo.getFolio(),
+                    retiroSinCuentaNuevo.getMonto());
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "No se pudo guardar la Retiros Sin Cuenta.", e);
             throw new PersistenciaException("No se pudo guardar el Retiros Sin Cuenta.", e);
         }
     }
-    
-   }
-    
 
+}

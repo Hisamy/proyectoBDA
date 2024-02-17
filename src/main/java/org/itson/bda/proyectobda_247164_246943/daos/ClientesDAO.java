@@ -27,7 +27,7 @@ public class ClientesDAO implements IClientesDAO {
     @Override
     public List<Clientes> consultar() throws PersistenciaException {
         String sentenciaSQL = """
-                              SELECT id, fecha_nacimiento, nombre, apellido_paterno,apellido_materno
+                              SELECT id, fecha_nacimiento, nombre, apellido_paterno,apellido_materno,correo_electronico
                               FROM clientes;
                               """;
         List<Clientes> listaClientes = new LinkedList<>();
@@ -38,11 +38,13 @@ public class ClientesDAO implements IClientesDAO {
             ResultSet resultados = comando.executeQuery();
             while (resultados.next()) {
                 Integer id = resultados.getInt("id");
-                Date fechaNacimiento = resultados.getDate("fechaNacimiento");
+//                Date fechaNacimiento = resultados.getDate("fechaNacimiento");
+                Date fechaNacimiento = new Date(resultados.getDate("fechaNacimiento").getTime());
                 String nombre = resultados.getString("nombre");
                 String apellidoPaterno = resultados.getString("apellidoPaterno");
                 String apellidoMaterno = resultados.getString("apellidoMaterno");
-                Clientes cliente = new Clientes(id,fechaNacimiento ,nombre, apellidoPaterno, apellidoMaterno);
+                String correoElectronico = resultados.getString("correoElectronico");
+                Clientes cliente = new Clientes(id,fechaNacimiento ,nombre, apellidoPaterno, apellidoMaterno, correoElectronico);
                 listaClientes.add(cliente);
             }
             logger.log(Level.INFO, "Se consultaron {0} clientes", listaClientes.size());
@@ -71,7 +73,7 @@ public class ClientesDAO implements IClientesDAO {
             logger.log(Level.INFO, "Se agregaron {0} clientes", numeroRegistrosInsertados);
             ResultSet idsGenerados = comando.getGeneratedKeys();
             idsGenerados.next();
-            return new Clientes(idsGenerados.getInt(1),clienteNuevo.getFechaNacimiento() ,clienteNuevo.getNombre(), clienteNuevo.getApellidoPaterno(), clienteNuevo.getApellidoMaterno());
+            return new Clientes(idsGenerados.getInt(1),clienteNuevo.getFechaNacimiento() ,clienteNuevo.getNombre(), clienteNuevo.getApellidoPaterno(), clienteNuevo.getApellidoMaterno(), clienteNuevo.getcorreoElectronico());
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "No se pudo guardar el cliente.", e);
             throw new PersistenciaException("No se pudo guardar el cliente.", e);

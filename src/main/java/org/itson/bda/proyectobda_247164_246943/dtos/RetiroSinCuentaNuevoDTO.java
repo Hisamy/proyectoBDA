@@ -5,16 +5,26 @@ import java.sql.Date;
 
 
 public class RetiroSinCuentaNuevoDTO{
-    private int clave;
+    private int folio;
+    private int contrasenia;
     private Float monto;
     private Date fechaGenerada;
 
+    public int getFolio() {
+        return folio;
+    }
+
+    public void setFolio(int folio) {
+        this.folio = folio;
+    }
+
+    
     public int getClave() {
-        return clave;
+        return contrasenia;
     }
 
     public void setClave(int clave) {
-        this.clave = clave;
+        this.contrasenia = clave;
     }
 
     public Date getFechaGenerada() {
@@ -25,7 +35,7 @@ public class RetiroSinCuentaNuevoDTO{
         this.fechaGenerada = fechaGenerada;
     }
 
-    public Float getMonto() {
+    public float getMonto() {
         return monto;
     }
 
