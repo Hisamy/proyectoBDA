@@ -23,7 +23,7 @@ public class BancoMB {
 //        clientesForm.setVisible(true);
         JFrameInicioSesion  inicioSesion= new JFrameInicioSesion();
         inicioSesion.setVisible(true);
-//        
+    
     
     }
 }
