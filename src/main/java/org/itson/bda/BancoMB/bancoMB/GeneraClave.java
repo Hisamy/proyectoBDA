@@ -5,18 +5,28 @@ import java.util.Random;
 import javax.swing.JFrame;
 import org.itson.bda.proyectobda_247164_246943.daos.IClientesDAO;
 
-
+ /**
+ * La clase `GeneraClave` representa la interfaz gráfica para generar contraseñas y folios
+ * relacionados con operaciones bancarias.
+ */
 public class GeneraClave extends javax.swing.JFrame {
 
-
  private final IClientesDAO clientesDAO;
- 
+
+    /**
+    * Constructor de la clase `GeneraClave`.
+    * @param clientesDAO Interfaz para acceder a la capa de acceso de datos relacionada con clientes.
+    */
     public GeneraClave(IClientesDAO clientesDAO) {
         initComponents();
         this.clientesDAO = clientesDAO;
   
     }
-    
+
+    /**
+    * Establece el concepto en la etiqueta correspondiente.
+    * @param concepto El concepto a establecer.
+    */
     public void setConcepto(String concepto) {
        if(concepto.isBlank()){
            lblConcepto.setText("");
@@ -26,10 +36,18 @@ public class GeneraClave extends javax.swing.JFrame {
          lblConcepto.setText(concepto);
        } 
     }
-
+ 
+    /**
+    * Establece el monto en la etiqueta correspondiente.
+    * @param monto El monto a establecer.
+    */
     public void setMonto(String monto) {
         lblMonto.setText(monto);
     }
+
+    /**
+    * Genera y establece una contraseña aleatoria en la etiqueta correspondiente.
+    */
     public void setContrasenia() {
         Random random = new Random();
         int digito1 = random.nextInt(10);
@@ -41,7 +59,9 @@ public class GeneraClave extends javax.swing.JFrame {
 
         lblContrasenia.setText(contrasenia);
     }
-    
+    /**
+    * Genera y establece un folio aleatorio en la etiqueta correspondiente.
+    */
     public void setFolio() {
         Random random = new Random();
         int digito1 = random.nextInt(10);
