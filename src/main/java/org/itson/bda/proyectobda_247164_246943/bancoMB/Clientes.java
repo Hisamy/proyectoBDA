@@ -12,29 +12,32 @@ public class Clientes {
    
     private Integer id;
     private Date fechaNacimiento;
-    private String nombre, apellidoMaterno, apellidoPaterno;
+    private String nombre, apellidoMaterno, apellidoPaterno, tarjeta, correoElectronico;
     private int edad;
     private int idDomicilio;
 
     public Clientes() {
     }
 
-    public Clientes(Date fechaNacimiento, String nombre, String apellidoMaterno, String apellidoPaterno) {
+    public Clientes(Date fechaNacimiento, String nombre, String apellidoMaterno, String apellidoPaterno, String tarjeta, String correoElectronico) {
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
         this.apellidoMaterno = apellidoMaterno;
         this.apellidoPaterno = apellidoPaterno;
+        this.tarjeta = tarjeta;
+        this.correoElectronico = correoElectronico;
     }
     
     
 
-    public Clientes(Integer id, Date fechaNacimiento, String nombre, String apellidoMaterno, String apellidoPaterno) {
+    public Clientes(Integer id, Date fechaNacimiento, String nombre, String apellidoMaterno, String apellidoPaterno, String tarjeta, String correoElectronico) {
         this.id = id;
         this.fechaNacimiento = fechaNacimiento;
         this.nombre = nombre;
         this.apellidoMaterno = apellidoMaterno;
         this.apellidoPaterno = apellidoPaterno;
-  
+        this.tarjeta = tarjeta;
+        this.correoElectronico = correoElectronico;
     }
 
     public Integer getId() {
@@ -92,11 +95,11 @@ public class Clientes {
     public void setIdDomicilio(int idDomicilio) {
         this.idDomicilio = idDomicilio;
     }
-    
-  
 
-    
-    
+    public Clientes(String tarjeta, String correoElectronico) {
+        this.tarjeta = tarjeta;
+        this.correoElectronico = correoElectronico;
+    }  
     
 }
 
